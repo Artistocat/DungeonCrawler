@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dungeon_Floor", "Dungeon Floor\Dungeon_Floor\Dungeon_Floor.csproj", "{F1ED9918-F708-41CC-9755-B299C731811D}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "Dungeon_FloorContent", "Dungeon Floor\Dungeon_FloorContent\Dungeon_FloorContent.contentproj", "{454E8528-FD96-493B-966A-5A755B4126D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1ED9918-F708-41CC-9755-B299C731811D}.Debug|x86.ActiveCfg = Debug|x86
+		{F1ED9918-F708-41CC-9755-B299C731811D}.Debug|x86.Build.0 = Debug|x86
+		{F1ED9918-F708-41CC-9755-B299C731811D}.Release|x86.ActiveCfg = Release|x86
+		{F1ED9918-F708-41CC-9755-B299C731811D}.Release|x86.Build.0 = Release|x86
+		{454E8528-FD96-493B-966A-5A755B4126D0}.Debug|x86.ActiveCfg = Debug|x86
+		{454E8528-FD96-493B-966A-5A755B4126D0}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
