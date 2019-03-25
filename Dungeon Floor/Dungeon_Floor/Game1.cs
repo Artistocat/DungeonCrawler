@@ -19,6 +19,10 @@ namespace Dungeon_Floor
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Rectangle fullWorld;
+        Tile[,] tiles;
+        Player player;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -33,7 +37,10 @@ namespace Dungeon_Floor
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            fullWorld = new Rectangle(0, 0, 32 * 200, 32 * 125);
+            tiles = new Tile[200, 125];
+
+
 
             base.Initialize();
         }
@@ -47,7 +54,29 @@ namespace Dungeon_Floor
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            Texture2D[] textures = new Texture2D[65];
+
+            for (int i = 1; i <= 65; i++)
+            {
+                textures[i] = Content.Load<Texture2D>("tile" + i);
+            }
+
+            int[] singles = { 1, 2, 3, 4, 5, 6, 7, 17, 18, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 49, 59, 60, 65 };
+
+            Random r = new Random();
+
+            for (int x = 0; x < 200; x++)
+            {
+                for (int y = 0; y < 125; y++)
+                {
+                    if (tiles[x, y] != null)
+                    {
+                        int nextTile = r.Next(); // TODO One for each image set. (like 1 for each single, then 1 for each macro image (made of smaller ones))
+                    }
+                }
+            }
+
+
         }
 
         /// <summary>
