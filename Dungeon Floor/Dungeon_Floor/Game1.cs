@@ -39,9 +39,6 @@ namespace Dungeon_Floor
         {
             fullWorld = new Rectangle(0, 0, 32 * 200, 32 * 125);
             tiles = new Tile[200, 125];
-
-
-
             base.Initialize();
         }
 
@@ -56,9 +53,9 @@ namespace Dungeon_Floor
 
             Texture2D[] textures = new Texture2D[65];
 
-            for (int i = 1; i <= 65; i++)
+            for (int i = 0; i < 65; i++)
             {
-                textures[i] = Content.Load<Texture2D>("tile" + i);
+                textures[i] = Content.Load<Texture2D>("tile" + (i + 1));
             }
 
             int[] singles = { 1, 2, 3, 4, 5, 6, 7, 17, 18, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 49, 59, 60, 65 };
@@ -71,7 +68,60 @@ namespace Dungeon_Floor
                 {
                     if (tiles[x, y] != null)
                     {
-                        int nextTile = r.Next(); // TODO One for each image set. (like 1 for each single, then 1 for each macro image (made of smaller ones))
+                        //8 -> 16
+                        //19 -> 21
+                        //22 -> 24
+                        //42 -> 48
+                        //50 -> 58
+                        //61 -> 64
+                        int nextTile = r.Next(singles.Length + 6); // TODO One for each image set. (like 1 for each single, then 1 for each macro image (made of smaller ones))
+                        if (nextTile < singles.Length)
+                        {
+                            nextTile = singles[nextTile];
+                            tiles[x, y] = new Tile(x, y, textures[nextTile - 1]);
+                        }
+                        else
+                        {
+                            nextTile -= singles.Length;
+                            switch (nextTile)
+                            {
+                                case 0:
+                                    nextTile = 8;
+                                    tiles[x, y] = new Tile(x, y, textures[7]);
+                                    tiles[x + 1, y] = new Tile(x + 1, y, textures[8]);
+                                    tiles[x + 2, y] = new Tile(x + 2, y, textures[9]);
+
+                                    tiles[x, y + 1] = new Tile(x, y + 1, textures[10]);
+                                    tiles[x + 1, y + 1] = new Tile(x + 1, y + 1, textures[11]);
+                                    tiles[x + 2, y + 1] = new Tile(x + 2, y + 1, textures[12]);
+
+                                    tiles[x, y + 2] = new Tile(x, y + 2, textures[13]);
+                                    tiles[x + 1, y + 2] = new Tile(x + 1, y + 2, textures[14]);
+                                    tiles[x + 2, y + 2] = new Tile(x + 2, y + 2, textures[15]);
+                                    break;
+                                case 1:
+                                    nextTile = 19;
+                                    tiles[x, y] = new Tile(x, y, textures[18]);
+                                    tiles[x + 1, y] = new Tile(x + 1, y, textures[19]);
+                                    tiles[x + 2, y] = new Tile(x + 2, y, textures[20]);                                    
+                                    break;
+                                case 2:
+                                    nextTile = 22;
+                                    tiles[x, y] = new Tile(x, y, textures[21]);
+                                    tiles[x, y + 1] = new Tile(x, y + 1, textures[22]);
+                                    tiles[x, y + 2] = new Tile(x, y + 2, textures[23]);
+                                    break;
+                                case 3:
+                                    nextTile = 42;
+                                    break;
+                                case 4:
+                                    nextTile = 50;
+                                    break;
+                                case 5:
+                                    nextTile = 61;
+                                    break;                                                          
+                            }
+                        }
                     }
                 }
             }
